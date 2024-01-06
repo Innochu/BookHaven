@@ -33,4 +33,8 @@
     <Folder Include="Serilog\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BookHaven.Persistence\BookHaven.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>

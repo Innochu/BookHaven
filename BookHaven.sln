@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookHaven.Common", "BookHav
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookHaven.Validations", "BookHaven.Validations\BookHaven.Validations.csproj", "{7859A3AB-6D3E-4ECC-8C56-22AF5391A3FB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Serilog", "Serilog", "{D6E9EE20-5429-41CA-8757-FA51EDAC32AE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
