@@ -1,4 +1,12 @@
+using Serilog;
+
 var builder = WebApplication.CreateBuilder(args);
+
+ Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("Serilog/BookHaven_Log.txt", rollingInterval: RollingInterval.Minute)
+    .MinimumLevel.Information()
+    .CreateLogger();
 
 // Add services to the container.
 

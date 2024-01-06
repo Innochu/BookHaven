@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookHaven.Application", "Bo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookHaven.Common", "BookHaven.Common\BookHaven.Common.csproj", "{845B231E-30F8-49D5-9EC4-E7A85B33AB64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookHaven.Validations", "BookHaven.Validations\BookHaven.Validations.csproj", "{7859A3AB-6D3E-4ECC-8C56-22AF5391A3FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Serilog", "Serilog", "{D6E9EE20-5429-41CA-8757-FA51EDAC32AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,10 @@ Global
 		{845B231E-30F8-49D5-9EC4-E7A85B33AB64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{845B231E-30F8-49D5-9EC4-E7A85B33AB64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{845B231E-30F8-49D5-9EC4-E7A85B33AB64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7859A3AB-6D3E-4ECC-8C56-22AF5391A3FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7859A3AB-6D3E-4ECC-8C56-22AF5391A3FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7859A3AB-6D3E-4ECC-8C56-22AF5391A3FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7859A3AB-6D3E-4ECC-8C56-22AF5391A3FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
