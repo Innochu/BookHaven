@@ -29,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BookHaven.Application\BookHaven.Application.csproj" />
     <ProjectReference Include="..\BookHaven.Domain\BookHaven.Domain.csproj" />
   </ItemGroup>
 

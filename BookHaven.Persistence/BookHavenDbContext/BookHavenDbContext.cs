@@ -13,6 +13,8 @@ namespace BookHaven.Persistence
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Book> Books { get; set; }
+       // public DbSet<CartItem> CartItems { get; set; }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -36,12 +38,13 @@ namespace BookHaven.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Define primary key for the User entity
             modelBuilder.Entity<User>().HasKey(u => u.Id);
+            modelBuilder.Entity<Book>().HasKey(b => b.Id);
 
             // Additional configurations for other entities can be added here
 
             base.OnModelCreating(modelBuilder);
         }
+
     }
 }

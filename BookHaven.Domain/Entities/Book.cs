@@ -20,7 +20,7 @@ namespace BookHaven.Domain.Entities
         [Column(TypeName = "decimal(8, 2)")]
         public decimal Price { get; set; }
 
-        public long CategoryId { get; set; }
-        public ICollection<Category> Category { get; set; }
+        //public long CategoryId { get; set; }
+        public ICollection<Category> Category { get; set; } = new List<Category>();
     }
 }
