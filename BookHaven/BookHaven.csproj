@@ -34,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BookHaven.Common\BookHaven.Common.csproj" />
     <ProjectReference Include="..\BookHaven.Persistence\BookHaven.Persistence.csproj" />
   </ItemGroup>
 

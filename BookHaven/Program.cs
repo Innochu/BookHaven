@@ -1,6 +1,8 @@
 using BookHaven.AutoMapper;
 using BookHaven.Persistence;
+using BookHaven.Persistence.Extension;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,11 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
     .CreateLogger();
 
 // Add services to the container.
-builder.Services.AddDbContext<BookHavenDbContext>(option =>
-{
-    option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
-
+var configuration = builder.Configuration;
+builder.Services.AddDependencies(configuration);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
