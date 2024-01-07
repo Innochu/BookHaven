@@ -6,5 +6,6 @@ namespace BookHaven.Application.Interface.Repository
     {
         Task<Order> AddOrderAsync(Order order);
         Task<Order> GetOrderByIdAsync(string Id);
+        Task<OrderStatus> GetOrderStatusByIdAsync(string id);
     }
 }

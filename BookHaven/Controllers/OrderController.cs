@@ -85,6 +85,36 @@ namespace BookHaven.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Internal Server Error");
             }
         }
+
+        /// <summary>
+        /// Gets the status of a specific order by ID.
+        /// </summary>
+        /// <param name="id">Order ID.</param>
+        /// <returns>Status of the order.</returns>
+        [HttpGet("{id}/status")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetOrderStatusById(string id)
+        {
+            try
+            {
+                var orderStatus = await _orderService.GetOrderStatusByIdAsync(id);
+
+                if (orderStatus == null)
+                {
+                    return NotFound(); // Order not found
+                }
+
+                return Ok(orderStatus);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error occurred while fetching order status with Id: {id}");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal Server Error");
+            }
+        }
+
     }
 
 }

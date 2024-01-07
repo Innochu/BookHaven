@@ -8,6 +8,7 @@ namespace BookHaven.Application.Interface.Service
     {
         Task<OrderRequestDto> PlaceOrderAsync(string userId, List<OrderItemDto> orderItems);
         Task<OrderResponseDto> GetOrderByIdAsync(string id);
+        Task<OrderStatusResponseDto> GetOrderStatusByIdAsync(string id);
 
 
     }

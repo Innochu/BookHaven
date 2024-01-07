@@ -27,5 +27,11 @@ namespace BookHaven.Persistence.Repository
 
             return getId;
         }
+
+        public async Task<OrderStatus> GetOrderStatusByIdAsync(string id)
+        {
+            // Assuming there's a DbSet<OrderStatus> in your DbContext
+            return await _bookHavenDbContext.OrderStatuses.FirstOrDefaultAsync(os => os.OrderId == id);
+        }
     }
 }

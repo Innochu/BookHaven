@@ -50,5 +50,14 @@ namespace BookHaven.Application.Services
                 throw; // Rethrow the exception after logging
             }
         }
+
+        public async Task<OrderStatusResponseDto> GetOrderStatusByIdAsync(string id)
+        {
+            // Logic to fetch the order status from the repository or any other source
+            var orderStatus = await _orderRepository.GetOrderStatusByIdAsync(id);
+
+            return _mapper.Map<OrderStatusResponseDto>(orderStatus);
+        }
+
     }
 }
