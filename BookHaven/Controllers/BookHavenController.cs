@@ -22,10 +22,21 @@ namespace BookHaven.Controllers
             _logger = logger;
         }
 
-        // Get : https://localhost:7293/api/Region
-        //GET ALL Books
+
+        /// <summary>
+        /// Gets all books.
+        /// </summary>
+        /// <param name="filterOn">Filter criteria.</param>
+        /// <param name="filterQuery">Filter query.</param>
+        /// <param name="sortBy">Sort by criteria.</param>
+        /// <param name="isAscending">Sort order.</param>
+        /// <param name="pageNumber">Page number.</param>
+        /// <param name="pageSize">Page size.</param>
+        /// <returns>List of books.</returns>
         [HttpGet]
-        
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+
         public async Task<IActionResult> GetAll([FromQuery] string? filterOn, [FromQuery] string? filterQuery,
         [FromQuery] string? sortBy, [FromQuery] bool isAscending,
         [FromQuery] int pageNumber, [FromQuery] int pageSize)
@@ -43,7 +54,15 @@ namespace BookHaven.Controllers
         }
 
 
+        /// <summary>
+        /// Gets a book by its ID.
+        /// </summary>
+        /// <param name="id">Book ID.</param>
+        /// <returns>The requested book.</returns>
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetBookById(long id)
         {
             try
