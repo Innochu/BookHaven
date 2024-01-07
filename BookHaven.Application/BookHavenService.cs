@@ -88,6 +88,30 @@ namespace BookHaven.Application
         }
 
 
-    }
+        public async Task<List<BookHavenResponseDto>> GetAllBooksAsync()
+        {
+            try
+            {
+                var books = await _bookHavenRepository.GetAllAsync();
+
+                if (books.Any())
+                {
+                    return _mapper.Map<List<BookHavenResponseDto>>(books);
+                }
+                else
+                {
+                    _logger.LogInformation("No books found.");
+                    // You can choose to return an empty list or NotFound status based on your requirement.
+                    return new List<BookHavenResponseDto>();
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while fetching all books.");
+                // Rethrow the exception after logging
+                throw;
+            }
+
+        }
 }
 

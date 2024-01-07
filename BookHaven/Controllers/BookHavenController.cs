@@ -44,7 +44,14 @@ namespace BookHaven.Controllers
             try
             {
                 var books = await _bookHavenService.GetBooksAsync(filterOn, filterQuery, sortBy, isAscending, pageNumber, pageSize);
-                return Ok(books);
+                if (books.Any())
+                {
+                    return Ok(books);
+                }
+                else
+                {
+                    return NotFound(); // Or any other appropriate status code
+                }
             }
             catch (Exception ex)
             {
@@ -81,5 +88,38 @@ namespace BookHaven.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Gets all books.
+        /// </summary>
+        /// <returns>List of books.</returns>
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetAllBooks()
+        {
+            try
+            {
+                var books = await _bookHavenService.GetBooksAsync();
+
+                if (books.Any())
+                {
+                    return Ok(books);
+                }
+                else
+                {
+                    _logger.LogInformation("No books found.");
+                    return NotFound(); // Or any other appropriate status code
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while processing the request.");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal Server Error");
+            }
+        }
+
+       
     }
 }
+

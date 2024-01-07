@@ -25,6 +25,11 @@ namespace BookHaven.Persistence.Repository
             return getId;
         }
 
+        public async Task<IEnumerable<Book>> GetAllAsync()
+        {
+            return await _bookHavenDbContext.Books.Include(x => x.Category).ToListAsync();
+
+        }
     }
 }
 

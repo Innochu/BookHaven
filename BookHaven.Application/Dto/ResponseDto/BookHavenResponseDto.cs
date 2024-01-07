@@ -14,6 +14,6 @@ namespace BookHaven.Application.Dto.ResponseDto
 
         public decimal Price { get; set; }
 
-       // public ICollection<CategoryDto> Categories { get; set; } = new List<CategoryDto>();
+        public ICollection<CategoryDto> Categories { get; set; } = new List<CategoryDto>();
     }
 }
