@@ -18,7 +18,7 @@ namespace BookHaven.Persistence.Repository
             return _bookHavenDbContext.Books.AsQueryable();
         }
 
-        public async Task<Book> GetBookByIdAsync(long Id)
+        public async Task<Book> GetBookByIdAsync(string Id)
         {
             var getId = await _bookHavenDbContext.Books.FirstOrDefaultAsync(item => item.Id == Id);
 

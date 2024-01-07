@@ -81,7 +81,7 @@ namespace BookHaven.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error occurred while fetching book with Id: {id}");
-                return StatusCode(500, "Internal server error");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal Server Error");
             }
         }
 

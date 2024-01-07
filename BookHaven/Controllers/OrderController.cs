@@ -2,6 +2,7 @@
 using BookHaven.Application.Dto.RequestDto;
 using BookHaven.Application.Dto.ResponseDto;
 using BookHaven.Application.Interface.Service;
+using BookHaven.Validations;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookHaven.Controllers
@@ -28,6 +29,7 @@ namespace BookHaven.Controllers
         /// <param name="orderRequestDto">Order details.</param>
         /// <returns>Details of the placed order.</returns>
         [HttpPost]
+        [ModelStateValidation]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -35,10 +37,6 @@ namespace BookHaven.Controllers
         {
             try
             {
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest(ModelState);
-                }
 
                 var userId = "sampleUserId"; // You may get the user ID from your authentication system
                 var orderItems = _mapper.Map<List<OrderItemDto>>(orderRequestDto.OrderItems);
@@ -92,6 +90,7 @@ namespace BookHaven.Controllers
         /// <param name="id">Order ID.</param>
         /// <returns>Status of the order.</returns>
         [HttpGet("{id}/status")]
+        [ModelStateValidation]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -99,6 +98,15 @@ namespace BookHaven.Controllers
         {
             try
             {
+                // Validate the incoming DTO using FluentValidation
+                //var validator = new BookHavenRequestDtoValidator();
+                //var validationResult = validator.Validate(bookRequestDto);
+
+                //if (!validationResult.IsValid)
+                //{
+                //    return BadRequest(validationResult.Errors);
+                //}
+
                 var orderStatus = await _orderService.GetOrderStatusByIdAsync(id);
 
                 if (orderStatus == null)

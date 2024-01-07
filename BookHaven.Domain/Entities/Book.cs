@@ -5,10 +5,11 @@ namespace BookHaven.Domain.Entities
 {
     public class Book
     {
-        public long Id { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
 
         [Required (ErrorMessage ="Enter a valid Title")]
         public string Title { get; set; } = string.Empty;
+        public int Quantity { get; set; }
 
         [Required, MinLength(4, ErrorMessage = "minimum lenght is 20")]
         public string ShortDescription { get; set; } = string.Empty;

@@ -1,4 +1,5 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using BookHaven.Messaging;
+using Microsoft.OpenApi.Models;
 
 namespace BookHaven.Configurations
 {
@@ -25,6 +26,9 @@ namespace BookHaven.Configurations
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "BookHaven API V1");
                 c.RoutePrefix = string.Empty;
             });
+
+            var inventoryUpdater = app.ApplicationServices.GetRequiredService<InventoryUpdater>();
+            inventoryUpdater.StartListening();
         }
     }
 }

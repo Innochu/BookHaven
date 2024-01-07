@@ -2,7 +2,7 @@
 {
     public class OrderStatus
     {
-        public long Id { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
 
         public string OrderId { get; set; } = string.Empty;
 

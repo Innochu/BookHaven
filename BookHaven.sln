@@ -5,15 +5,17 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookHaven", "BookHaven\BookHaven.csproj", "{73FB3E00-5399-4DC5-BC8B-ADC7E2AFB41C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookHaven.Domain", "BookHaven.Domain\BookHaven.Domain.csproj", "{88E75FDC-C2B8-429E-A59A-255509825C29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookHaven.Domain", "BookHaven.Domain\BookHaven.Domain.csproj", "{88E75FDC-C2B8-429E-A59A-255509825C29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookHaven.Persistence", "BookHaven.Persistence\BookHaven.Persistence.csproj", "{87982AE2-1929-4C84-BA21-4C26BF893607}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookHaven.Persistence", "BookHaven.Persistence\BookHaven.Persistence.csproj", "{87982AE2-1929-4C84-BA21-4C26BF893607}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookHaven.Application", "BookHaven.Application\BookHaven.Application.csproj", "{1A33F414-BF06-4D9C-9594-E321AC39BCB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookHaven.Application", "BookHaven.Application\BookHaven.Application.csproj", "{1A33F414-BF06-4D9C-9594-E321AC39BCB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookHaven.Common", "BookHaven.Common\BookHaven.Common.csproj", "{845B231E-30F8-49D5-9EC4-E7A85B33AB64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookHaven.Common", "BookHaven.Common\BookHaven.Common.csproj", "{845B231E-30F8-49D5-9EC4-E7A85B33AB64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookHaven.Validations", "BookHaven.Validations\BookHaven.Validations.csproj", "{7859A3AB-6D3E-4ECC-8C56-22AF5391A3FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookHaven.Validations", "BookHaven.Validations\BookHaven.Validations.csproj", "{7859A3AB-6D3E-4ECC-8C56-22AF5391A3FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookHaven.Messaging", "BookHaven.Messaging\BookHaven.Messaging.csproj", "{402F9450-27E5-499F-B424-B419481CA116}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{7859A3AB-6D3E-4ECC-8C56-22AF5391A3FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7859A3AB-6D3E-4ECC-8C56-22AF5391A3FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7859A3AB-6D3E-4ECC-8C56-22AF5391A3FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{402F9450-27E5-499F-B424-B419481CA116}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{402F9450-27E5-499F-B424-B419481CA116}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{402F9450-27E5-499F-B424-B419481CA116}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{402F9450-27E5-499F-B424-B419481CA116}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

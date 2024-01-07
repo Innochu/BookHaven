@@ -72,7 +72,7 @@ namespace BookHaven.Application.Services
         }
 
 
-        public async Task<BookHavenResponseDto> GetBookByIdAsync(long id)
+        public async Task<BookHavenResponseDto> GetBookByIdAsync(string id)
         {
             try
             {
