@@ -1,6 +1,6 @@
 ﻿using BookHaven.Domain.Entities;
 
-namespace BookHaven.Application.Interface
+namespace BookHaven.Application.Interface.Repository
 {
     public interface IBookHavenRepo
     {
@@ -9,5 +9,7 @@ namespace BookHaven.Application.Interface
         public Task<Book> GetBookByIdAsync(long Id);
 
         Task<IEnumerable<Book>> GetAllAsync();
+
+       
     }
 }

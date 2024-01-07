@@ -1,7 +1,7 @@
 ﻿using BookHaven.Application.Dto.ResponseDto;
 using BookHaven.Domain.Entities;
 
-namespace BookHaven.Application.Interface
+namespace BookHaven.Application.Interface.Implementation
 {
     public interface IBookHavenService
     {
@@ -9,5 +9,7 @@ namespace BookHaven.Application.Interface
        string? sortBy = null, bool isAscending = true, int pageNumber = 1, int pageSize = 1000);
 
         Task<BookHavenResponseDto> GetBookByIdAsync(long id);
+        Task<List<BookHavenResponseDto>> GetAllBooksAsync();
+       
     }
 }

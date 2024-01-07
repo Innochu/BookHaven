@@ -1,8 +1,5 @@
 ﻿using AutoMapper;
-using BookHaven.Application.Dto;
-using BookHaven.Application.Dto.ResponseDto;
-using BookHaven.Application.Interface;
-using Microsoft.AspNetCore.Http;
+using BookHaven.Application.Interface.Implementation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookHaven.Controllers
@@ -93,7 +90,7 @@ namespace BookHaven.Controllers
         /// Gets all books.
         /// </summary>
         /// <returns>List of books.</returns>
-        [HttpGet]
+        [HttpGet("GetAll-All-book")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAllBooks()
@@ -109,7 +106,7 @@ namespace BookHaven.Controllers
                 else
                 {
                     _logger.LogInformation("No books found.");
-                    return NotFound(); // Or any other appropriate status code
+                    return NotFound(); 
                 }
             }
             catch (Exception ex)

@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using BookHaven.Application.Dto.ResponseDto;
-using BookHaven.Application.Interface;
-using BookHaven.Domain.Entities;
+using BookHaven.Application.Interface.Implementation;
+using BookHaven.Application.Interface.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace BookHaven.Application
+namespace BookHaven.Application.Services
 {
     public class BookHavenService : IBookHavenService
     {
@@ -101,17 +101,23 @@ namespace BookHaven.Application
                 else
                 {
                     _logger.LogInformation("No books found.");
-                    // You can choose to return an empty list or NotFound status based on your requirement.
+
                     return new List<BookHavenResponseDto>();
                 }
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while fetching all books.");
-                // Rethrow the exception after logging
+
                 throw;
             }
 
         }
+
+
+
+
+    }
 }
+
 
