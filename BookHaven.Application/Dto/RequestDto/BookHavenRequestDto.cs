@@ -1,4 +1,4 @@
-﻿namespace BookHaven.Application.Dto
+﻿namespace BookHaven.Application.Dto.RequestDto
 {
     public class BookHavenRequestDto
     {
