@@ -1,5 +1,6 @@
 ﻿using BookHaven.Application.Interface.Repository;
 using BookHaven.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookHaven.Persistence.Repository
 {
@@ -18,6 +19,13 @@ namespace BookHaven.Persistence.Repository
             _bookHavenDbContext.Orders.Add(order);
             await _bookHavenDbContext.SaveChangesAsync();
             return order;
+        }
+
+        public async Task<Order> GetOrderByIdAsync(string Id)
+        {
+            var getId = await _bookHavenDbContext.Orders.FirstOrDefaultAsync(item => item.Id == Id);
+
+            return getId;
         }
     }
 }

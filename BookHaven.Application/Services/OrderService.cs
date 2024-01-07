@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using BookHaven.Application.Dto.RequestDto;
+using BookHaven.Application.Dto.ResponseDto;
 using BookHaven.Application.Interface.Repository;
+using BookHaven.Application.Interface.Service;
 using BookHaven.Domain.Entities;
 using Microsoft.Extensions.Logging;
 
 namespace BookHaven.Application.Services
 {
-    public class OrderService
+    public class OrderService : IOrderService
     {
         private readonly IOrderRepo _orderRepository;
         private readonly ILogger<BookHavenService> _logger;
@@ -32,6 +34,21 @@ namespace BookHaven.Application.Services
 
             // Map the addedOrder to OrderDto before returning
             return _mapper.Map<OrderRequestDto>(addedOrder);
+        }
+
+        public async Task<OrderResponseDto> GetOrderByIdAsync(string id)
+        {
+            try
+            {
+                var getbook = await _orderRepository.GetOrderByIdAsync(id);
+
+                return _mapper.Map<OrderResponseDto>(getbook);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error occurred while fetching book with Id: {id}");
+                throw; // Rethrow the exception after logging
+            }
         }
     }
 }

@@ -1,9 +1,14 @@
-﻿using BookHaven.Domain.Entities;
+﻿using BookHaven.Application.Dto.RequestDto;
+using BookHaven.Application.Dto.ResponseDto;
+using BookHaven.Domain.Entities;
 
 namespace BookHaven.Application.Interface.Service
 {
     public interface IOrderService
     {
-        Task<Order> PlaceOrderAsync(string userId, List<OrderItem> orderItems);
+        Task<OrderRequestDto> PlaceOrderAsync(string userId, List<OrderItemDto> orderItems);
+        Task<OrderResponseDto> GetOrderByIdAsync(string id);
+
+
     }
 }
