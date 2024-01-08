@@ -31,7 +31,13 @@ namespace BookHaven.Persistence.Repository
 
         }
 
-       
+        public async Task<Book> CreateAsync(Book book)
+        {
+            await _bookHavenDbContext.Books.AddAsync(book);
+            await _bookHavenDbContext.SaveChangesAsync();
+            return book;
+
+        }
     }
 }
 

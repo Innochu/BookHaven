@@ -21,24 +21,32 @@ namespace BookHaven.Persistence
         public DbSet<OrderStatus> OrderStatuses { get; set; }
 
 
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        //public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        //{
+        //    foreach (var item in ChangeTracker.Entries<BaseEntity>())
+        //    {
+        //        switch (item.State)
+        //        {
+        //            case EntityState.Modified:
+        //                item.Entity.UpdatedAt = DateTime.UtcNow;
+        //                break;
+        //            case EntityState.Added:
+        //                item.Entity.Id = Guid.NewGuid().ToString();
+        //                item.Entity.CreatedAt = DateTime.UtcNow;
+        //                break;
+        //            default:
+        //                break;
+        //        }
+        //    }
+        //    return await base.SaveChangesAsync(cancellationToken);
+        //}
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            foreach (var item in ChangeTracker.Entries<BaseEntity>())
-            {
-                switch (item.State)
-                {
-                    case EntityState.Modified:
-                        item.Entity.UpdatedAt = DateTime.UtcNow;
-                        break;
-                    case EntityState.Added:
-                        item.Entity.Id = Guid.NewGuid().ToString();
-                        item.Entity.CreatedAt = DateTime.UtcNow;
-                        break;
-                    default:
-                        break;
-                }
-            }
-            return await base.SaveChangesAsync(cancellationToken);
+            // Enable sensitive data logging
+            optionsBuilder.EnableSensitiveDataLogging();
+
+            base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

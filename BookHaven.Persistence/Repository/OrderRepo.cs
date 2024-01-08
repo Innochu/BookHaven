@@ -14,9 +14,10 @@ namespace BookHaven.Persistence.Repository
             _bookHavenDbContext = bookHavenDbContext ?? throw new ArgumentNullException(nameof(BookHavenDbContext));
         }
 
+
         public async Task<Order> AddOrderAsync(Order order)
         {
-            _bookHavenDbContext.Orders.Add(order);
+            _bookHavenDbContext.Orders.Update(order);
             await _bookHavenDbContext.SaveChangesAsync();
             return order;
         }
@@ -53,6 +54,14 @@ namespace BookHaven.Persistence.Repository
             {
                 Console.WriteLine($"Book with ID {bookId} not found in the database.");
             }
+        }
+
+        public async Task<Order> CreateAsync(Order order)
+        {
+            await _bookHavenDbContext.Orders.AddAsync(order);
+            await _bookHavenDbContext.SaveChangesAsync();
+            return order;
+
         }
     }
 }

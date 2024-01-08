@@ -1,8 +1,10 @@
 using BookHaven.AutoMapper;
+using BookHaven.Common.Utility;
 using BookHaven.Persistence;
 using BookHaven.Persistence.Extension;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +24,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(typeof(BookHavenAutoMapper));
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,6 +35,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
 
 app.UseHttpsRedirection();
 
@@ -49,5 +56,8 @@ void ApplyMigration()
         {
             _db.Database.Migrate();
         }
+
+      
+
     }
 }

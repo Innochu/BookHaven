@@ -6,10 +6,11 @@ namespace BookHaven.Application.Interface.Repository
     {
         IQueryable<Book> GetBooks();
 
-        public Task<Book> GetBookByIdAsync(string Id);
+        Task<Book> GetBookByIdAsync(string Id);
 
         Task<IEnumerable<Book>> GetAllAsync();
+        Task<Book> CreateAsync(Book book);
 
-       
+
     }
 }

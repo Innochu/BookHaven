@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using BookHaven.Application.Dto.RequestDto;
 using BookHaven.Application.Dto.ResponseDto;
 using BookHaven.Application.Interface.Implementation;
 using BookHaven.Application.Interface.Repository;
+using BookHaven.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -115,7 +117,27 @@ namespace BookHaven.Application.Services
         }
 
 
+      
+        public async Task<BookHavenResponseDto> CreateAsync(BookHavenRequestDto bookRequestDto)
+        {
+            try
+            {
+                var book = _mapper.Map<Book>(bookRequestDto);
 
+
+                await _bookHavenRepository.CreateAsync(book);
+             
+
+                var bookResponseDto = _mapper.Map<BookHavenResponseDto>(book);
+                return bookResponseDto;
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                _logger.LogError(ex, $"Error creating book: {ex.Message}");
+                throw; 
+            }
+        }
 
     }
 }

@@ -11,6 +11,8 @@ namespace BookHaven.AutoMapper
         {
             CreateMap<BookHavenResponseDto, Book>().ReverseMap();
             CreateMap<OrderItem, OrderItemDto>().ReverseMap();
+            CreateMap<Book, BookHavenRequestDto>().ReverseMap();
+
 
         }
     }

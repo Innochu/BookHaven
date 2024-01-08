@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using BookHaven.Application.Dto.RequestDto;
+using BookHaven.Application.Dto.ResponseDto;
 using BookHaven.Application.Interface.Implementation;
 using Microsoft.AspNetCore.Mvc;
 
@@ -67,7 +69,7 @@ namespace BookHaven.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetBookById(long id)
+        public async Task<IActionResult> GetBookById(string id)
         {
             try
             {
@@ -116,7 +118,39 @@ namespace BookHaven.Controllers
             }
         }
 
-       
+
+        /// <summary>
+        /// Creates a new book in the BookHaven system.
+        /// </summary>
+        /// <param name="bookRequestDto">The details of the book to be created.</param>
+        /// <returns>Returns the created book details.</returns>
+        /// <response code="201">Returns the newly created book.</response>
+        /// <response code="400">If the request is invalid or malformed.</response>
+        /// <response code="500">If an error occurs while processing the request.</response>
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        
+        public async Task<ActionResult<BookHavenResponseDto>> CreateAsync([FromBody] BookHavenRequestDto bookRequestDto)
+        {
+            try
+            {
+                var createdBook = await _bookHavenService.CreateAsync(bookRequestDto);
+
+                // Return 201 Created status along with the created book
+                return CreatedAtAction(nameof(GetBookById), createdBook);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                _logger.LogError(ex, $"Error creating book: {ex.Message}");
+
+                // Return 500 Internal Server Error status along with the error message
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal Server Error");
+            }
+        }
+
     }
 }
 
