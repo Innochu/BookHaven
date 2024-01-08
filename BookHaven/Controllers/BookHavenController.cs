@@ -49,7 +49,7 @@ namespace BookHaven.Controllers
                 }
                 else
                 {
-                    return NotFound(); // Or any other appropriate status code
+                    return NotFound(); 
                 }
             }
             catch (Exception ex)

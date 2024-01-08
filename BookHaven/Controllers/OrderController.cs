@@ -38,7 +38,7 @@ namespace BookHaven.Controllers
             try
             {
 
-                var userId = "sampleUserId"; // You may get the user ID from your authentication system
+                var userId = "sampleUserId"; 
                 var orderItems = _mapper.Map<List<OrderItemDto>>(orderRequestDto.OrderItems);
 
                 var placedOrder = await _orderService.PlaceOrderAsync(userId, orderItems);
@@ -98,14 +98,7 @@ namespace BookHaven.Controllers
         {
             try
             {
-                // Validate the incoming DTO using FluentValidation
-                //var validator = new BookHavenRequestDtoValidator();
-                //var validationResult = validator.Validate(bookRequestDto);
-
-                //if (!validationResult.IsValid)
-                //{
-                //    return BadRequest(validationResult.Errors);
-                //}
+                
 
                 var orderStatus = await _orderService.GetOrderStatusByIdAsync(id);
 
